@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "github.com/liangshuixitou/consistency/paxos/proto";
+
+package paxos;
+
+service PaxosService {
+    rpc Prepare(PrepareMessage) return (PromiseMessage) {}
+    rpc Propose(ProposeMessage) return (AcceptMessage) {}
+}
+
+message PrepareMessage {
+    int number = 1;
+}
+
+message PromiseMessage {
+    int number = 1;
+    int value = 2;
+}
+
+message ProposeMessage {
+    int number = 1;
+    int value = 2;
+}
+
+message AcceptMessage {
+    int number = 1;
+}
